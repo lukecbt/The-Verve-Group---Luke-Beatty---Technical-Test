@@ -7,6 +7,8 @@ namespace The_Verve_Group___Luke_Beatty.Models
 {
     public class GithubUser
     {
+        public string Login { get; set; }
+
         public string Name { get; set; }
 
         public string Location { get; set; }
