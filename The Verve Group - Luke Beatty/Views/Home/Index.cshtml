@@ -3,8 +3,9 @@
 }
 
 <div class="jumbotron">
-    <h1>The Verve Group - Technical Test - Luke Beatty</h1>
-    <p class="lead">Enter the GitHub Username of the user you would like to see the information of.</p>
+    <h1 style="text-align: center">The Verve Group - Technical Test</h1>
+    <h2 style="text-align: center">Luke Beatty</h2>
+    <p class="lead" style="text-align: center">Enter the GitHub Username of the user you would like to see the information of.</p>
 </div>
 
 @Html.Action("RenderForm")
@@ -25,7 +26,8 @@
         <p><strong>Location: </strong>@Model.Location</p>
     </div>
     <div>
-        <p><strong>Avatar URL: </strong> @Model.Avatar_URL</p>
+        <p><strong>Avatar: </strong></p>
+        <img src="@Model.Avatar_URL" alt="avatar" width="200" height="200"/>
     </div>
 
     <h3>-- Repositories --</h3>
