@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>The Verve Group - Technical Test - Luke Beatty</h1>
+    <p class="lead">Enter the GitHub Username of the user you would like to see the information of.</p>
+</div>
+
+@Html.Action("RenderForm")
+
+@if (Convert.ToBoolean(TempData["Submitted"]))
+{
+    @model The_Verve_Group___Luke_Beatty.Models.GithubUser
+    <div style="text-align:center;">
+        <h2>Searching user: @Model.Name</h2>
+    </div>
+
+    <div>
+        <p><strong>Name: </strong>@Model.Name</p>
+    </div>
+    <div>
+        <p><strong>Location: </strong>@Model.Location</p>
+    </div>
+    <div>
+        <p><strong>Avatar URL: </strong> @Model.Avatar_URL</p>
+    </div>
+
+    <h3>-- Repositories --</h3>
+
+    if (Model.Repos != null)
+    {
+        <table style="width: 100%">
+            <thead>
+                <tr>
+                    <td>
+                        <div>
+                            <strong>Name</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>Full Name</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>Description</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>Stargazers</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>Repo URL</strong>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (The_Verve_Group___Luke_Beatty.Models.GithubRepo repo in Model.Repos)
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <a href="@repo.Html_URL">@repo.Name</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @repo.Full_Name
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @repo.Description
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @repo.Stargazers_Count
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @repo.Html_URL
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>
+            This user has no repositorys.
+        </div>
+    }
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
